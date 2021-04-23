@@ -110,10 +110,11 @@ void* runner(void* param) {           // thread runner
       }
     }
   }
-  //pthread_mutex_lock(&mutex_);
+  pthread_mutex_lock(&mutex_);
   std::cout << ">>>>>>>>>>>>>>> Customer thread p#" << c->get_id() << " shutting down... <<<<<<<<<<<<<<<<<\n\n";
+  pthread_mutex_unlock(&mutex_);
+  
   b->show();
-  //pthread_mutex_unlock(&mutex_);
 
   pthread_exit(0);
 }
